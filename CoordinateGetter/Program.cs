@@ -89,30 +89,27 @@ namespace CoordinateGetter
             }
 
             // Write out we're done processing these items if we've reached the end of the file with no more items found
-            if (Globals.wroteFlameHeader) { 
-                if (Globals.startFlameCoords.Count > 0) {
-                    WriteListToFile(Globals.startFlameCoords);
-                }
-                if (Globals.holeshotFlameCoords.Count > 0) {
-                    WriteListToFile(Globals.holeshotFlameCoords);
-                }
-                if (Globals.finishFlameCoords.Count > 0) {
-                    WriteListToFile(Globals.finishFlameCoords);
-                }
-                if (Globals.flameBillboardOutput.Count > 0) {
-                    WriteListToFile(Globals.flameBillboardOutput);
-                }
 
-                Console.WriteLine(Colors.FgGreen + "Done Processing Flames" + Colors.Reset); 
-            }
             if (Globals.wroteGateSoundsHeader) { Console.WriteLine(Colors.FgGreen + "Done Processing Gate Sounds" + Colors.Reset); }
             if (Globals.wroteSpeakerHeader) {
+                Globals.speakersList.Add("];\n");
                 WriteListToFile(Globals.speakersList);
                 Console.WriteLine(Colors.FgGreen + "Done Processing Speakers" + Colors.Reset);
             }
             if (Globals.wroteBleacherHeader) {
+                Globals.bleachersList.Add("];\n");
                 WriteListToFile(Globals.bleachersList);
                 Console.WriteLine(Colors.FgGreen + "Done Processing Bleachers" + Colors.Reset);
+            }
+
+            if (Globals.wroteFlameHeader) { 
+                if (Globals.flamesCoords.Count > 0) {
+                    WriteListToFile(Globals.flamesCoords);
+                }
+                if (Globals.flameBillboardOutput.Count > 0) {
+                    WriteListToFile(Globals.flameBillboardOutput);
+                }
+                Console.WriteLine(Colors.FgGreen + "Done Processing Flames" + Colors.Reset); 
             }
 
             // close the output file
@@ -159,6 +156,7 @@ namespace CoordinateGetter
             if (!Globals.wroteBleacherHeader) {
                 Console.WriteLine("\nGetting Bleacher Coords...");
                 Globals.bleachersList.Add("\nBLEACHER COORDS:\n");
+                Globals.bleachersList.Add("const bleacherSoundPositions = [");
                 Globals.wroteBleacherHeader = true;
             }
 
@@ -167,13 +165,14 @@ namespace CoordinateGetter
                 return;
             }
 
-            Globals.bleachersList.Add(lineElements[0] + ", " + (Globals.BLEACHER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2]);
+            Globals.bleachersList.Add('\t' + lineElements[0] + ", " + (Globals.BLEACHER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2]);
         }
 
         private static void DoSpeaker(string[] lineElements) {
             if (!Globals.wroteSpeakerHeader) {
                 Console.WriteLine("\nGetting Speaker Coords...");
                 Globals.speakersList.Add("\nSPEAKER COORDS:\n");
+                Globals.speakersList.Add("const speakerPositions = [");
                 Globals.wroteSpeakerHeader = true;
             }
 
@@ -182,7 +181,7 @@ namespace CoordinateGetter
                 return;
             }
 
-            Globals.speakersList.Add(lineElements[0] + ", " + (Globals.SPEAKER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2]);
+            Globals.speakersList.Add('\t' + lineElements[0] + ", " + (Globals.SPEAKER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2]);
 
         }
 

@@ -17,7 +17,7 @@ namespace CoordinateGetter {
         public static bool wroteFlameHeader = false;
 
         public const string DOGHOUSE_PNG = "@os2022bgsxobj/statue/other/doghouse/doghouse.png";
-        public const string HOLESHOT_PNG = "@@os2022bgsxobj/statue/other/holeshot.png";
+        public const string HOLESHOT_PNG = "@os2022bgsxobj/statue/other/holeshot.png";
         public const string BLEACHER_PNG = "@os2022bgsxobj/statue/other/estrades.png";
         public const string FINISH_PNG = "@os2022bgsxobj/statue/other/finish/finishline.png";
         public const string SPEAKER_PNG = "@os2022bgsxobj/statue/other/speaker.png";
@@ -45,10 +45,9 @@ namespace CoordinateGetter {
         public static List<string> balesList = new List<string>();
         public static List<string> speakersList = new List<string>();
         public static List<string> bleachersList = new List<string>();
-        public static List<string> startFlameCoords = new List<string>();
+        public static List<string> flamesCoords = new List<string>();
         public static List<string> flameBillboardOutput = new List<string>();
-        public static List<string> holeshotFlameCoords = new List<string>();
-        public static List<string> finishFlameCoords = new List<string>();
+        public static List<string> flameIndices = new List<string>();
 
         public static StreamWriter outputFile;
     }

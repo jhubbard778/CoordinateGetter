@@ -8,7 +8,7 @@ namespace CoordinateGetter {
         public static void DoDoghouseWork(string[] lineElements) {
             if (!Globals.wroteFlameHeader) { 
                 Console.WriteLine("\nGetting Flame Coords...");
-                
+                Globals.flameBillboardOutput.Add("FLAME BILLBOARD COORDINATES:\n");
                 Globals.wroteFlameHeader = true;
             }
             if (!Globals.wroteGateSoundsHeader) {
@@ -28,13 +28,13 @@ namespace CoordinateGetter {
                 Console.WriteLine("Cannot Parse Doghouse Coords");
                 return;
             }
-
+            center_z = -center_z;
             GateSounds(center_x, center_z, angle);
-            StartFlames(center_x, center_y, center_z, angle);
+            DoStart(center_x, center_y, center_z, angle);
 
         }
 
-        private static void StartFlames(double center_x, double center_y, double center_z, double angle) {
+        private static void DoStart(double center_x, double center_y, double center_z, double angle) {
 
             /*
             ##########################################
@@ -42,9 +42,9 @@ namespace CoordinateGetter {
             ##########################################
             */
 
-            Globals.flameBillboardOutput.Add("FLAME BILLBOARD COORDINATES:\n");
-            Globals.startFlameCoords.Add("START FLAME COORDINATES: \n");
-            Globals.startFlameCoords.Add("const startFlameCoords = [");
+            List<string> startFlameCoords = new List<string>();
+            startFlameCoords.Add("START FLAME COORDINATES: \n");
+            startFlameCoords.Add("const startFlameCoords = [");
 
             int modulusFlipper = 0;
             int aspect = 1;
@@ -60,10 +60,7 @@ namespace CoordinateGetter {
 
             for (int i = 0; i < Globals.START_FLAME_DISTANCES_FROM_ORIGIN.Length; i++) {
                 double x = center_x + Globals.START_FLAME_DISTANCES_FROM_ORIGIN[i];
-                double z = center_z + Globals.DOGHOUSE_FLAME_OFFSET_FROM_ORIGIN;
-
-                // flip z axis since sim is retarded
-                z = -z;
+                double z = center_z - Globals.DOGHOUSE_FLAME_OFFSET_FROM_ORIGIN;
 
                 // If we've reached halfway we want to repeat what we just did in reverse so we need to flip the modulus result
                 // to pick the correct path
@@ -84,16 +81,18 @@ namespace CoordinateGetter {
                 rot_z = Math.Abs(rot_z);
 
                 // Add to lists
-                Globals.startFlameCoords.Add('[' + rot_x.ToString() + ", " + (Globals.START_FLAME_HEIGHT + center_y).ToString()
+                startFlameCoords.Add("\t[" + rot_x.ToString() + ", " + (Globals.START_FLAME_HEIGHT + center_y).ToString()
                     + ", " + rot_z.ToString() + "],");
+                flameShooterBillboards.Add("[" + rot_x.ToString() + ", " + Globals.START_FLAME_HEIGHT.ToString() +
+                    ", " + rot_z.ToString() + "] " + size2.ToString() + ' ' + aspect2.ToString() + ' ' + path3);
+
                 Globals.flameBillboardOutput.Add('[' + rot_x.ToString() + ", " + Globals.START_FLAME_HEIGHT.ToString() +
                     ", " + rot_z.ToString() + "] " + size.ToString() + ' ' + aspect.ToString() + ' ' + path);
-                flameShooterBillboards.Add('[' + rot_x.ToString() + ", " + Globals.START_FLAME_HEIGHT.ToString() +
-                    ", " + rot_z.ToString() + "] " + size2.ToString() + ' ' + aspect2.ToString() + ' ' + path3);
             }
 
-            Globals.startFlameCoords.Add("];\n");
+            startFlameCoords.Add("];\n");
             Globals.flameBillboardOutput.AddRange(flameShooterBillboards);
+            Globals.flamesCoords.AddRange(startFlameCoords);
         }
 
         private static void GateSounds(double center_x, double center_z, double angle) {
@@ -109,8 +108,11 @@ namespace CoordinateGetter {
             double rot_right_x = Program.Rotate_X(right_x, right_z, center_x, center_z, angle);
             double rot_right_z = Program.Rotate_Z(right_x, right_z, center_x, center_z, angle);
 
-            string gateSoundOutput = "var gateSoundPositions = [\n[" + rot_left_x.ToString() + 
-                ", 0, " + rot_left_z.ToString() + "],\n[" + center_x.ToString() + ", 0, " + center_z.ToString() + "],\n[" +
+            center_z = Math.Abs(center_z);
+            rot_left_z = Math.Abs(rot_left_z);
+            rot_right_z = Math.Abs(rot_right_z);
+            string gateSoundOutput = "var gateSoundPositions = [\n\t[" + rot_left_x.ToString() + 
+                ", 0, " + rot_left_z.ToString() + "],\n\t[" + center_x.ToString() + ", 0, " + center_z.ToString() + "],\n\t[" +
                 rot_right_x.ToString() + ", 0, " + rot_right_z.ToString() + "],\n];\n";
 
             Globals.outputFile.WriteLine("GATE SOUNDS: \n\n" + gateSoundOutput);
