@@ -1,0 +1,13 @@
+C:\Users\Jakob\source\repos\CoordinateGetter\bin\Release\netcoreapp3.1\CoordinateGetter.exe
+C:\Users\Jakob\source\repos\CoordinateGetter\bin\Release\netcoreapp3.1\CoordinateGetter.deps.json
+C:\Users\Jakob\source\repos\CoordinateGetter\bin\Release\netcoreapp3.1\CoordinateGetter.runtimeconfig.json
+C:\Users\Jakob\source\repos\CoordinateGetter\bin\Release\netcoreapp3.1\CoordinateGetter.runtimeconfig.dev.json
+C:\Users\Jakob\source\repos\CoordinateGetter\bin\Release\netcoreapp3.1\CoordinateGetter.dll
+C:\Users\Jakob\source\repos\CoordinateGetter\bin\Release\netcoreapp3.1\CoordinateGetter.pdb
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.AssemblyInfoInputs.cache
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.AssemblyInfo.cs
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.csproj.CoreCompileInputs.cache
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.dll
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.pdb
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.genruntimeconfig.cache
+C:\Users\Jakob\source\repos\CoordinateGetter\obj\Release\netcoreapp3.1\CoordinateGetter.csprojAssemblyReference.cache

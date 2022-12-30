@@ -42,21 +42,23 @@ namespace CoordinateGetter {
             ##########################################
             */
 
-            List<string> startFlameCoords = new List<string>();
-            startFlameCoords.Add("START FLAME COORDINATES: \n");
-            startFlameCoords.Add("const startFlameCoords = [");
+            List<string> startFlameCoords = new List<string>
+            {
+                "START FLAME COORDINATES: \n",
+                "const startFlameCoords = ["
+            };
 
             int modulusFlipper = 0;
             int aspect = 1;
             int size = 10;
-            string path1 = "@os2022bgsxobj/js/pyro/startflames.seq";
-            string path2 = "@os2022bgsxobj/js/pyro/startflames2.seq";
+            string path1 = "@os2022bgsxfobj/js/pyro/startflames.seq";
+            string path2 = "@os2022bgsxfobj/js/pyro/startflames2.seq";
 
             List<string> flameShooterBillboards = new List<string>();
 
             double aspect2 = 0.75;
             int size2 = 35;
-            string path3 = "@os2022bgsxobj/js/pyro/holeshotflames.seq";
+            string path3 = "@os2022bgsxfobj/js/pyro/holeshotflames.seq";
 
             for (int i = 0; i < Globals.START_FLAME_DISTANCES_FROM_ORIGIN.Length; i++) {
                 double x = center_x + Globals.START_FLAME_DISTANCES_FROM_ORIGIN[i];
@@ -83,11 +85,11 @@ namespace CoordinateGetter {
                 // Add to lists
                 startFlameCoords.Add("\t[" + rot_x.ToString() + ", " + (Globals.START_FLAME_HEIGHT + center_y).ToString()
                     + ", " + rot_z.ToString() + "],");
-                flameShooterBillboards.Add("[" + rot_x.ToString() + ", " + Globals.START_FLAME_HEIGHT.ToString() +
-                    ", " + rot_z.ToString() + "] " + size2.ToString() + ' ' + aspect2.ToString() + ' ' + path3);
+                flameShooterBillboards.Add("[" + rot_x.ToString() + " " + (Globals.START_FLAME_HEIGHT + center_y).ToString() +
+                    " " + rot_z.ToString() + "] " + size2.ToString() + ' ' + aspect2.ToString() + ' ' + path3);
 
-                Globals.flameBillboardOutput.Add('[' + rot_x.ToString() + ", " + Globals.START_FLAME_HEIGHT.ToString() +
-                    ", " + rot_z.ToString() + "] " + size.ToString() + ' ' + aspect.ToString() + ' ' + path);
+                Globals.flameBillboardOutput.Add('[' + rot_x.ToString() + " " + (Globals.START_FLAME_HEIGHT + center_y).ToString() +
+                    " " + rot_z.ToString() + "] " + size.ToString() + ' ' + aspect.ToString() + ' ' + path);
             }
 
             startFlameCoords.Add("];\n");

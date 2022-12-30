@@ -16,11 +16,11 @@ namespace CoordinateGetter {
         public static bool wroteGateSoundsHeader = false;
         public static bool wroteFlameHeader = false;
 
-        public const string DOGHOUSE_PNG = "@os2022bgsxobj/statue/other/doghouse/doghouse.png";
-        public const string HOLESHOT_PNG = "@os2022bgsxobj/statue/other/holeshot.png";
-        public const string BLEACHER_PNG = "@os2022bgsxobj/statue/other/estrades.png";
-        public const string FINISH_PNG = "@os2022bgsxobj/statue/other/finish/finishline.png";
-        public const string SPEAKER_PNG = "@os2022bgsxobj/statue/other/speaker.png";
+        public const string DOGHOUSE_PNG = "@os2022bgsxfobj/statue/other/doghouse/doghouse.png";
+        public const string HOLESHOT_PNG = "@os2022bgsxfobj/statue/other/holeshot.png";
+        public const string BLEACHER_PNG = "@os2022bgsxfobj/statue/other/estrades.png";
+        public const string FINISH_PNG = "@os2022bgsxfobj/statue/other/finish/finishline.png";
+        public const string SPEAKER_PNG = "@os2022bgsxfobj/statue/other/speaker.png";
         public const double DOGHOUSE_FLAME_OFFSET_FROM_ORIGIN = 2.31;
         public const double BLEACHER_SOUND_HEIGHT = 5.5;
         public const double HOLESHOT_FLAME_HEIGHT = 7.25;

@@ -49,13 +49,12 @@ namespace CoordinateGetter {
                 p2rotx.ToString() + ", " + (Globals.HOLESHOT_FLAME_HEIGHT + center_y).ToString() + ", " +
                 p2rotz.ToString() + "]\n];\n";
 
-
             int size = 25;
             double aspect = 0.5;
-            string path = "@os2022bgsxobj/js/pyro/holeshotflames.seq";
-            string holeshotBillboardOutput = '[' + p1rotx.ToString() + ", " + Globals.HOLESHOT_FLAME_HEIGHT.ToString() + ", " +
+            string path = "@os2022bgsxfobj/js/pyro/holeshotflames.seq";
+            string holeshotBillboardOutput = '[' + p1rotx.ToString() + " " + (Globals.HOLESHOT_FLAME_HEIGHT + center_y).ToString() + " " +
                 p1rotz.ToString() + "] " + size.ToString() + ' ' + aspect.ToString() + ' ' + path + "\n[" +
-                p2rotx.ToString() + ", " + Globals.HOLESHOT_FLAME_HEIGHT.ToString() + ", " + p2rotz.ToString() + "] " +
+                p2rotx.ToString() + " " + (Globals.HOLESHOT_FLAME_HEIGHT + center_y).ToString() + " " + p2rotz.ToString() + "] " +
                 size.ToString() + ' ' + aspect.ToString() + ' ' + path;
 
             Globals.flamesCoords.Add(holeshotOutput);

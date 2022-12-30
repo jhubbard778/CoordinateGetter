@@ -37,8 +37,8 @@ namespace CoordinateGetter {
 
             int aspect = 1;
             int size = 45;
-            string path1 = "@os2022bgsxobj/js/pyro/finishflames.seq";
-            string path2 = "@os2022bgsxobj/js/pyro/finishflames2.seq";
+            string path1 = "@os2022bgsxfobj/js/pyro/finishflames.seq";
+            string path2 = "@os2022bgsxfobj/js/pyro/finishflames2.seq";
 
             for (int i = 0; i < Globals.FINISH_FLAME_DISTANCES_FROM_ORIGIN.Length; i++) {
 
@@ -57,8 +57,8 @@ namespace CoordinateGetter {
                 // Add to lists
                 finishLineFlames.Add("\t[" + rot_x.ToString() + ", " + (Globals.FINISH_FLAME_HEIGHT + center_y).ToString()
                     + ", " + rot_z.ToString() + "],");
-                finishFlameBillboards.Add('[' + rot_x.ToString() + ", " + Globals.FINISH_FLAME_HEIGHT.ToString() +
-                    ", " + rot_z.ToString() + "] " + size.ToString() + ' ' + aspect.ToString() + ' ' + path);
+                finishFlameBillboards.Add('[' + rot_x.ToString() + " " + (Globals.FINISH_FLAME_HEIGHT + center_y).ToString() +
+                    " " + rot_z.ToString() + "] " + size.ToString() + ' ' + aspect.ToString() + ' ' + path);
 
             }
 

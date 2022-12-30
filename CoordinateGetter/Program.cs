@@ -55,8 +55,8 @@ namespace CoordinateGetter
                         WriteListToFile(Globals.balesList);
                         doneProcessingBales = true;
                         Console.WriteLine(Colors.FgGreen + "Done Processing Bales" + Colors.Reset);
+                        continue;
                     }
-                    continue;
                 }
 
                 // If the line includes a doghouse png image do doghouse work
@@ -121,10 +121,8 @@ namespace CoordinateGetter
             Console.WriteLine("\nGetting Start Flagger Coords...");
 
             Globals.outputFile.WriteLine("FLAGGER COORDINATES: \n");
-            Globals.outputFile.WriteLine("var starterStartPos = " + lineElements[0] + ", " + lineElements[2]);
-            Globals.outputFile.WriteLine("var starterEndPos = [" + Globals.startFlaggerEndCoords[0] + ", " + 
-                Globals.startFlaggerEndCoords[1] + "]\n");
-
+            Globals.outputFile.WriteLine("var starterStartPos = " + lineElements[0] + ", " + lineElements[2] + ';');
+            Globals.outputFile.WriteLine("var starterEndPos = [" + Globals.startFlaggerEndCoords[0] + ", " + Globals.startFlaggerEndCoords[1] + "];\n");
             Console.WriteLine(Colors.FgGreen + "Done Processing Flagger" + Colors.Reset);
         }
 
@@ -134,12 +132,12 @@ namespace CoordinateGetter
                Globals.balesList.Add("BALE COORDINATES:");
             }
             if (direction == "up" && !Globals.wroteBaleUpHeader) {
-                Globals.balesList.Add("\nconst baleUpStartIndex = " + (Globals.balesUpStartLineNum - 1).ToString());
+                Globals.balesList.Add("\nconst baleUpStartIndex = " + (Globals.balesUpStartLineNum - 1).ToString() + ';');
                 Globals.balesList.Add("const baleCoordsUp = [");
                 Globals.wroteBaleUpHeader = true;
             }
             if (direction == "down" && !Globals.wroteBaleDownHeader) {
-                Globals.balesList.Add("\nconst baleDownStartIndex = " + (Globals.balesDownStartLineNum - 1).ToString());
+                Globals.balesList.Add("\nconst baleDownStartIndex = " + (Globals.balesDownStartLineNum - 1).ToString() + ';');
                 Globals.balesList.Add("const baleCoordsDown = [");
                 Globals.wroteBaleDownHeader = true;
             }
@@ -165,7 +163,7 @@ namespace CoordinateGetter
                 return;
             }
 
-            Globals.bleachersList.Add('\t' + lineElements[0] + ", " + (Globals.BLEACHER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2]);
+            Globals.bleachersList.Add('\t' + lineElements[0] + ", " + (Globals.BLEACHER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2] + ',');
         }
 
         private static void DoSpeaker(string[] lineElements) {
@@ -181,7 +179,7 @@ namespace CoordinateGetter
                 return;
             }
 
-            Globals.speakersList.Add('\t' + lineElements[0] + ", " + (Globals.SPEAKER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2]);
+            Globals.speakersList.Add('\t' + lineElements[0] + ", " + (Globals.SPEAKER_SOUND_HEIGHT + y).ToString() + ", " + lineElements[2] + ',');
 
         }
 
